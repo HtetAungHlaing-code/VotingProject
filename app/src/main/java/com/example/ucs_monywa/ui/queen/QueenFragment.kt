@@ -7,29 +7,50 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ucs_monywa.R
+import com.example.ucs_monywa.adapter.QueenAdapter
+import kotlinx.android.synthetic.main.fragment_queen.*
+
 
 class QueenFragment : Fragment() {
 
-    private lateinit var homeViewModel: QueenViewModel
+    private lateinit var queenViewModel: QueenViewModel
+    private lateinit var queenAdapter: QueenAdapter
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-<<<<<<< HEAD:app/src/main/java/com/example/ucs_monywa/ui/queen/QueenFragment.kt
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-=======
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel::class.java)
+
         val root = inflater.inflate(R.layout.fragment_queen, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
->>>>>>> origin/Heinnanda:app/src/main/java/com/example/ucs_monywa/ui/home/HomeFragment.kt
         return root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        queenAdapter = QueenAdapter()
+        Queen_Recycler.apply{
+            adapter = queenAdapter
+            layoutManager = LinearLayoutManager(context)
+        }
+
+        obseredView()
+    }
+    fun obseredView(){
+        queenViewModel = ViewModelProvider(this).get(QueenViewModel::class.java)
+        queenViewModel.getQueen().observe(viewLifecycleOwner,
+        Observer {
+            queenAdapter.update(it)
+        })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        queenViewModel.loadQueen()
+    }
+
 }

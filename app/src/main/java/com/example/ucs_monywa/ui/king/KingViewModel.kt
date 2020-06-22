@@ -1,5 +1,6 @@
 package com.example.ucs_monywa.ui.king
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -27,11 +28,14 @@ class KingViewModel : ViewModel() {
         val apiCall = voteApi.getKing()
         apiCall.enqueue(object : Callback<King> {
             override fun onFailure(call: Call<King>, t: Throwable) {
+                Log.i("Error","Load Fail King")
                 resultLoadError.value= true
                 loading.value=false
             }
 
             override fun onResponse(call: Call<King>, response: Response<King>) {
+                Log.i("Success","Load Success King")
+
                 response.isSuccessful.let {
                     loading.value=false
                     val kingResultList:List<KingItem> = response.body()?: emptyList()

@@ -3,19 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_gallery">
 
     <fragment
         android:id="@+id/nav_home"
-
+        android:name="com.example.ucs_monywa.ui.queen.QueenFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_queen" />
+        tools:layout="@layout/fragment_queen" >
+        <action
+            android:id="@+id/action_nav_home_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.example.ucs_monywa.ui.king.KingFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_king" />
+        tools:layout="@layout/fragment_king" >
+        <action
+            android:id="@+id/action_nav_gallery_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.ucs_monywa.ui.Fragment.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="VoteDetails"
+            app:argType="string[]" />
+    </fragment>
 
 
 </navigation>

@@ -1,0 +1,36 @@
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/txt_KingImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+             />
+
+        <TextView
+            android:id="@+id/txt_KingName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Queen"
+            android:gravity="center"
+            android:textSize="23dp"
+          />
+
+        <TextView
+            android:id="@+id/txt_KingVoteCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="24"
+            android:textSize="20dp"/>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
