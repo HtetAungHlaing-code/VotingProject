@@ -1,4 +1,4 @@
-package com.example.ucs_monywa.ui.king
+package com.example.ucs_monywa.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,12 +12,12 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ucs_monywa.R
 import com.example.ucs_monywa.adapter.KingAdapter
-import com.example.ucs_monywa.ui.model.KingItem
+import com.example.ucs_monywa.adapter.QueenAdapter
 
-class KingFragment : Fragment(),KingAdapter.KingClickListener {
+class QueenFragment : Fragment() {
 
-    private lateinit var kingAdapter: KingAdapter
-    private lateinit var kingViewModel: KingViewModel
+    private lateinit var queenViewModel: QueenViewModel
+    private lateinit var queenAdapter: QueenAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,37 +25,27 @@ class KingFragment : Fragment(),KingAdapter.KingClickListener {
         savedInstanceState: Bundle?
     ): View? {
 
-        val root = inflater.inflate(R.layout.fragment_king, container, false)
-
+        val root = inflater.inflate(R.layout.fragment_home, container, false)
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        kingAdapter = KingAdapter()
-
-        King_Recycler.apply{
+        queenAdapter = QueenAdapter()
+        Queen_Recyclergit.apply{
             adapter = KingAdapter
             layoutmanager = LinearLayoutManager(context)
         }
-        observedView()
 
-        kingAdapter.setClick(this)
-
+        obseredView()
     }
-
-    fun observedView(){
-        kingViewModel = ViewModelProvider(this).get(KingViewModel::class.java)
-        kingViewModel
+    fun obseredView(){
+        queenViewModel = ViewModelProvider(this).get(QueenViewModel::class.java)
+        queenViewModel
     }
 
     override fun onResume() {
         super.onResume()
-        kingViewModel
-    }
-
-    override fun onclick(kingItem: KingItem) {
-
+        queenViewModel
     }
 }
