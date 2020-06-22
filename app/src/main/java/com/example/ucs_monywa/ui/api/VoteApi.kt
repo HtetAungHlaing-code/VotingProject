@@ -18,4 +18,5 @@ class VoteApi {
     }
     fun getKing() = voteapiInterface.getKing()
     fun getQueen() = voteapiInterface.getQueen()
+
 }

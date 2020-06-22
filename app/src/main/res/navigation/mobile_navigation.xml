@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.ucs_monywa.ui.home.HomeFragment"
+        android:name="com.example.ucs_monywa.ui.queen.QueenFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
@@ -17,9 +17,5 @@
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_king" />
 
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.ucs_monywa.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+
 </navigation>
