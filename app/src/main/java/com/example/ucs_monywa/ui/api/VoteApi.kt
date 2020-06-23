@@ -1,5 +1,7 @@
 package com.example.ucs_monywa.ui.api
 
+import com.example.ucs_monywa.ui.model.King
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -18,5 +20,4 @@ class VoteApi {
     }
     fun getKing() = voteapiInterface.getKing()
     fun getQueen() = voteapiInterface.getQueen()
-
 }

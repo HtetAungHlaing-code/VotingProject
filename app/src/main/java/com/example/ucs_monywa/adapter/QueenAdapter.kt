@@ -9,7 +9,7 @@ import com.example.ucs_monywa.ui.model.KingItem
 import com.example.ucs_monywa.ui.model.Queen
 import com.example.ucs_monywa.ui.model.QueenItem
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_king.view.*
+import kotlinx.android.synthetic.main.king_item.view.*
 import kotlinx.android.synthetic.main.item_queen.view.*
 import kotlinx.coroutines.channels.ticker
 

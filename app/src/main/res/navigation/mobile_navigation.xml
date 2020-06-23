@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.ucs_monywa.ui.queen.QueenFragment"
-        android:label="@string/menu_home"
+        android:label="@string/menu_queen"
         tools:layout="@layout/fragment_queen" >
         <action
             android:id="@+id/action_nav_home_to_detailsFragment"
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.example.ucs_monywa.ui.king.KingFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/menu_king"
         tools:layout="@layout/fragment_king" >
         <action
             android:id="@+id/action_nav_gallery_to_detailsFragment"
@@ -27,11 +27,23 @@
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.example.ucs_monywa.ui.Fragment.DetailsFragment"
-        android:label="fragment_details"
+        android:label="Details"
         tools:layout="@layout/fragment_details" >
         <argument
-            android:name="VoteDetails"
-            app:argType="string[]" />
+            android:name="VoteCount"
+            app:argType="string" />
+        <argument
+            android:name="Class"
+            app:argType="string" />
+        <argument
+            android:name="Name"
+            app:argType="string" />
+        <argument
+            android:name="Image"
+            app:argType="string" />
+        <argument
+            android:name="VoteID"
+            app:argType="string" />
     </fragment>
 
 

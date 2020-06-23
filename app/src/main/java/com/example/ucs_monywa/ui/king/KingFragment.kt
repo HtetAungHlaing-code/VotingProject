@@ -4,11 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ucs_monywa.R
@@ -41,13 +39,13 @@ class KingFragment : Fragment(),KingAdapter.KingClickListener {
             adapter = kingAdapter
             layoutManager = LinearLayoutManager(context)
         }
-        observedView()
+        observedViewModel()
 
         kingAdapter.setClick(this)
 
     }
 
-    fun observedView(){
+    fun observedViewModel(){
         kingViewModel = ViewModelProvider(this).get(KingViewModel::class.java)
         kingViewModel.getKing().observe(viewLifecycleOwner,
         Observer {
@@ -61,27 +59,7 @@ class KingFragment : Fragment(),KingAdapter.KingClickListener {
     }
 
     override fun onclick(kingItem: KingItem) {
-        var id: String
-        var img:String
-        var name:String
-        var vote_count:String
-
-        id= kingItem.id
-        img= kingItem.img_url
-        name= kingItem.name
-        vote_count= kingItem.vote_count.toString()
-
-
-        var voteDetails =ArrayList<String>()
-
-        voteDetails.add(id)
-        voteDetails.add(img)
-        voteDetails.add(name)
-        voteDetails.add(vote_count)
-
-        val action = KingFragmentDirections.actionNavGalleryToDetailsFragment(voteDetails as Array<String>)
+        var action = KingFragmentDirections.actionNavGalleryToDetailsFragment(kingItem.vote_count.toString(),kingItem.`class`,kingItem.name,kingItem.img_url,kingItem.id)
         findNavController().navigate(action)
-
-
     }
 }

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ucs_monywa.R
 import com.example.ucs_monywa.ui.model.KingItem
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_king.view.*
+import kotlinx.android.synthetic.main.king_item.view.*
 
 class KingAdapter(var kingList: List<KingItem> = ArrayList()) : RecyclerView.Adapter<KingAdapter.KingViewHolder>(){
 
@@ -37,7 +37,7 @@ class KingAdapter(var kingList: List<KingItem> = ArrayList()) : RecyclerView.Ada
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): KingViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_king,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.king_item,parent,false)
         return KingViewHolder(view)
     }
 

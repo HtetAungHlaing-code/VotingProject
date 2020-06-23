@@ -16,8 +16,10 @@ class KingViewModel : ViewModel() {
     var KingResults: MutableLiveData<List<KingItem>> = MutableLiveData()
     var resultLoadError: MutableLiveData<Boolean> = MutableLiveData()
     var loading: MutableLiveData<Boolean> = MutableLiveData()
+    var KingDetail: MutableLiveData<KingItem> = MutableLiveData()
 
     fun getKing():LiveData<List<KingItem>> = KingResults
+    fun getkingDetail():LiveData<KingItem> = KingDetail
     fun getError(): LiveData<Boolean> = resultLoadError
     fun gerLoading(): LiveData<Boolean> = loading
 
@@ -42,6 +44,26 @@ class KingViewModel : ViewModel() {
                     KingResults.value= kingResultList
                 }
 
+            }
+
+        })
+    }
+
+    fun loadKingDetail(id: String){
+        loading.value= true
+        val apiCall = voteApi.getKing()
+        apiCall.enqueue(object : Callback<King>{
+            override fun onFailure(call: Call<King>, t: Throwable) {
+                resultLoadError.value= true
+                loading.value = false
+            }
+
+            override fun onResponse(call: Call<King>, response: Response<King>) {
+                response.isSuccessful.let {
+                    loading.value= false
+                    val kingDetailResult:List<KingItem> = response.body()?: emptyList()
+                    KingResults.value= kingDetailResult
+                }
             }
 
         })
